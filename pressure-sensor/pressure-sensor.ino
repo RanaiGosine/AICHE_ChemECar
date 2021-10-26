@@ -54,20 +54,21 @@ void loop() {
      pressure reading to: pascals, kilopascals, bar, torr, inches of murcury, and
      atmospheres.
    */
-  Serial.print(mpr.readPressure(),4);
-  Serial.println(" PSI");
+//  Serial.print(mpr.readPressure(),4);
+//  Serial.println(" PSI");
   Serial.print(mpr.readPressure(PA),1);
-  Serial.println(" Pa");
-  Serial.print(mpr.readPressure(KPA),4);
-  Serial.println(" kPa");
-  Serial.print(mpr.readPressure(TORR),3);
-  Serial.println(" torr");
-  Serial.print(mpr.readPressure(INHG),4);
-  Serial.println(" inHg");
-  Serial.print(mpr.readPressure(ATM),6);
-  Serial.println(" atm");
-  Serial.print(mpr.readPressure(BAR),6);
-  Serial.println(" bar");
-  Serial.println();
-  delay(500);
+  Serial.print("\n");
+//  Serial.println(" Pa");
+//  Serial.print(mpr.readPressure(KPA),4);
+//  Serial.println(" kPa");
+//  Serial.print(mpr.readPressure(TORR),3);
+//  Serial.println(" torr");
+//  Serial.print(mpr.readPressure(INHG),4);
+//  Serial.println(" inHg");
+//  Serial.print(mpr.readPressure(ATM),6);
+//  Serial.println(" atm");
+//  Serial.print(mpr.readPressure(BAR),6);
+//  Serial.println(" bar");
+//  Serial.println();
+  delay(100);
 }
