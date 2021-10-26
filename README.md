@@ -1,9 +1,9 @@
 # pHIRST CHEM-E-CAR STOPPING MECHANISM 
 ## DATA COLLECTION
 
-The script *pressure-sensor.ino* is an arduino script that takes pressure data from the _Sparkfun Qwiic MicroPressure Sensor_, and sends it live through a COM port to which it is connected. When uploaded, pins *A4* and *A5* serve as *SCA* and *SCL* lines respectively.
+The script `pressure-sensor.ino` is an arduino script that takes pressure data from the **Sparkfun Qwiic MicroPressure Sensor**, and sends it live through a COM port to which it is connected. When uploaded, pins **A4** and **A5** serve as **SCA** and **SCL** lines respectively.
 
-The script *p_readout.py* provides a GUI for plotting the pressure data live. This data is saved to *pressure-data.csv* by default. *pressure-data.csv* should be deleted or renamed at the start of a new experiment. The script can also use _polynomial regression_ to fit a polynomial curve to the data.
+The script `p_readout.py` provides a GUI for plotting the pressure data live. This data is saved to `pressure-data.csv` by default. `pressure-data.csv` should be deleted or renamed at the start of a new experiment. The script can also use _polynomial regression_ to fit a polynomial curve to the data.
 
 ## IMPORTANT NOTES
 
