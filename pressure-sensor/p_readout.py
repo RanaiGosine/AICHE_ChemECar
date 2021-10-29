@@ -130,7 +130,7 @@ class TtestFrame(ttk.Frame):
         self.file.close()
 
         self.xi = self.counter
-        self.counter+=500
+        self.counter+=100
         self.yi = float(self.data)
 
         self.x.append(self.xi)
