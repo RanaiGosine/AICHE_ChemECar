@@ -58,10 +58,11 @@ class TtestFrame(ttk.Frame):
         returns: Nothing."""
 
         ttk.Label(self, text='Pressure Readout Graph',font=16).grid(row=0,column=0,sticky=tk.W)
-        ttk.Button(self, text='START READOUT',command=self.start_readout).grid(row=2, column=0, sticky=tk.W)
-        ttk.Button(self, text='STOP READOUT',command=self.stop_readout).grid(row=2, column=1, sticky=tk.W)
+        ttk.Button(self, text='START EXPERIMENT/TIMER',command=self.start).grid(row=2, column=0, sticky=tk.W)
+        ttk.Button(self, text='STOP EXPERIMENT/TIMER',command=self.stop).grid(row=2, column=1, sticky=tk.W)
         ttk.Button(self, text='Predict',command=self.ml).grid(row=2,column=2,sticky=tk.W)
         ttk.Button(self, text = 'RESTART', command = self.restart).grid(row=3, column =0, sticky = tk.W)
+        ttk.Button(self, text = 'SAVE TO CSV', command = self.save).grid(row=4, column =0, sticky = tk.W)
         #ttk.Label(self, text='Group B').grid(row=0,column=1)
         #ttk.Label(self, text='p value = ').grid(row=1,column=1, sticky=tk.S+tk.W)
         #ttk.Entry(self, textvariable=self.this_is_a_string).grid(row=1,column=1,sticky=tk.S)
@@ -113,6 +114,21 @@ class TtestFrame(ttk.Frame):
     def restart(self):
         os.execl(sys.executable, sys.executable, *sys.argv)
 
+
+    def save(self):
+        self.file = open(self.fileName, "a")
+        for value in self.y:
+            self.file.write(str(value) +",")
+        self.file.close()
+
+    def start(self):
+        self.start_readout()
+        self.start_plot()
+
+    def stop(self):
+        self.stop_readout()
+        self.stop_plot()
+
     def start_readout(self):
         """collects pressure data and plots
 
@@ -124,10 +140,6 @@ class TtestFrame(ttk.Frame):
         self.ser.flushInput()
         self.ser.flushOutput()
         self.data = self.getData[2:][:-3]
-
-        self.file = open(self.fileName, "a")
-        self.file.write(self.data +",")
-        self.file.close()
 
         self.xi = self.counter
         self.counter+=100
@@ -142,6 +154,15 @@ class TtestFrame(ttk.Frame):
         #xmin, xmax = self.ax.get_xlim()
         #ymin, ymax = self.ax.get_ylim()
         # xmin, xmax, ymin, ymax = plt.axis()
+        self.after_id = self.after(100, self.start_readout)
+
+    def stop_readout(self):
+        """ stops readout of plot
+
+        Returns: Nothing"""
+        self.after_cancel(self.after_id)
+
+    def start_plot(self):
         self.mark = 'o'
         self.size = 3
         self.color = self.red
@@ -158,14 +179,12 @@ class TtestFrame(ttk.Frame):
         #                             'color': self.red, 
         #                             'shrinkA': 10})
         self.canvas.draw()
-        self.after_id = self.after(100, self.start_readout)
+        self.after_id_plot = self.after(5000, self.start_plot)
 
-    def stop_readout(self):
-        """ stops readout of plot
+    def stop_plot(self):
+        self.after_cancel(self.after_id_plot)
 
-        Returns: Nothing"""
-        self.after_cancel(self.after_id)
-
+    
     def ml(self):
         """uses ml to calc linear regression best fit for data set
         
