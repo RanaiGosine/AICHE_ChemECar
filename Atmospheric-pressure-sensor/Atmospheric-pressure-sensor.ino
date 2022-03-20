@@ -41,7 +41,7 @@ void loop()
 //  Serial.print("Humidity: ");
 //  Serial.print(mySensor.readFloatHumidity(), 0);
 
-  Serial.print(" Pressure: ");
+//  Serial.print(" Pressure: ");
   Serial.print(mySensor.readFloatPressure(), 0);
   Serial.print("\n");
 
