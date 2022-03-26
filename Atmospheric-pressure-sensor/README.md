@@ -1,6 +1,6 @@
 # Atmospheric Pressure Sensor
 
-When uploading the Atmospheric pressure sensor code to the Arduino you must include the library, Sparkfun BME280, in Arduino IDE. The respective header is 'SparkFunBME280.h'.
+When uploading the Atmospheric pressure sensor code to the Arduino you must include the library, Sparkfun BME280, in Arduino IDE. The respective header is `SparkFunBME280.h`.
 
 ## Method 1
 1) Go to sketch
