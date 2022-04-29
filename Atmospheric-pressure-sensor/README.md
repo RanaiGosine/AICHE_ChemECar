@@ -14,7 +14,7 @@ Method 2
 4) Select most recent version and install
 
 ## Connections
--Red wire -> 3.3v
--Black wire -> GND
--Yellow -> A4
--Blue -> A5
+1) Red wire -> 3.3v
+2) Black wire -> GND
+3) Yellow -> A4
+4) Blue -> A5
