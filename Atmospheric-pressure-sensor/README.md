@@ -13,7 +13,7 @@ Method 2
 3) Search for Sparkfun BME280
 4) Select most recent version and install
 
-##Connections
+## Connections
 Red wire -> 3.3v
 Black wire -> GND
 Yellow -> A4
