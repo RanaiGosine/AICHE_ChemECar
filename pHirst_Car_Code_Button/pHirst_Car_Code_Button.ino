@@ -11,6 +11,7 @@ int pressureValue = 0;   //the value read from the pressure sensor in Pa
 float stoppingPressure = 800;    // assign the pressure that we want to stop the car at here
 const int buttonPin = 4;     // digitalRead from button, D4 pin
 int buttonState = 0;         //state of button(high when button pressed, else low)
+//int test = 0;
 
 void setup() 
 {
@@ -54,8 +55,9 @@ void loop()
 
   //turn car state on with button------------------------------------
   buttonState = digitalRead(buttonPin);
+  delay(100);
   if(buttonState = HIGH){
-    onState = true
+    onState = true;
   }
   //------------------------------------------------------------------
 
@@ -63,6 +65,11 @@ void loop()
 //  Serial.println("ON");
 //  delay(5000);
 //  onState = true;
+//  test++;
+//  if (test == 10){
+//    buttonState = HIGH;
+//    Serial.println(test);
+//  }
 //-----------------------
   
   //Car operation with pressure sensor and motor---------------------
