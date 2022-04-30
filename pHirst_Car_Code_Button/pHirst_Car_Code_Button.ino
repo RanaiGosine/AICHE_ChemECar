@@ -28,6 +28,7 @@ void setup()
   //Relay setup-----------------------------------------------------
   pinMode(relayPin, OUTPUT);
   digitalWrite(relayPin, LOW);
+  Serial.println("OFF");
   //----------------------------------------------------------------
 
   //Button setup---------------------------------------------------
@@ -57,7 +58,7 @@ void loop()
   //turn car state on with button------------------------------------
   buttonState = digitalRead(buttonPin);
   delay(100);
-  if(buttonState = HIGH){
+  if(buttonState == 1){
     onState = true;
   }
   //------------------------------------------------------------------
@@ -83,10 +84,13 @@ void loop()
     
     //Motor On/Relay On---------------------------------
     digitalWrite(relayPin, HIGH);
+    Serial.println("ON");
     //--------------------------------------------------
     
     //read Pressure Sensor------------------------------
+    Serial.print(mySensor.readFloatPressure(), 0);
     pressureValue = mySensor.readFloatPressure();
+    Serial.println(pressureValue);
     delay(100);
     //--------------------------------------------------
 
@@ -98,6 +102,7 @@ void loop()
       
       //Motor Off/Relay Off-----------------------------
       digitalWrite(relayPin, LOW);
+      Serial.println("OFF");
       //------------------------------------------------
 
       //Exit the On while loop
